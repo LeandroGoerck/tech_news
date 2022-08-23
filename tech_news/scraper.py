@@ -1,6 +1,23 @@
-# Requisito 1
+import requests
+import time
+
+# target page(https://blog.betrybe.com)
+
+
 def fetch(url):
-    """Seu código deve vir aqui"""
+    headers = {"user-agent": "Fake user-agent"}
+    timeout = 3
+    try:
+        response = requests.get(url, headers=headers, timeout=timeout)
+        time.sleep(1)
+        response.raise_for_status()
+    except (requests.exceptions.HTTPError, requests.ReadTimeout):
+        return None
+    else:
+        if response.status_code == 200:
+            return response.text
+        else:
+            return None
 
 
 # Requisito 2
