@@ -34,7 +34,7 @@ def scrape_novidades(html_content):
 # Requisito 3
 def scrape_next_page_link(html_content):
     selector = parsel.Selector(html_content)
-    link = selector.css("a.next-link ::attr(href)").get()
+    link = selector.css("a.next ::attr(href)").get()
     if link != "":
         return link
     else:
