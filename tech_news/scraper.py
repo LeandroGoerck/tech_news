@@ -35,8 +35,8 @@ def scrape_novidades(html_content):
 def scrape_next_page_link(html_content):
     selector = parsel.Selector(html_content)
     link = selector.css("a.next-link ::attr(href)").get()
-    if link is None:
-        return None
+    if link != "":
+        return link
     else:
         return None
 
@@ -72,6 +72,8 @@ def scrape_noticia(html_content):
 
 # Requisito 5
 def get_tech_news(amount):
+    if amount is None:
+        return None
     news_list = []
     page = fetch("https://blog.betrybe.com/")
 
