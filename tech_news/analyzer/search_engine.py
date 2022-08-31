@@ -32,6 +32,12 @@ def search_by_date(date):
 # Requisito 8
 def search_by_tag(tag):
     """Seu código deve vir aqui"""
+    print(tag)
+    mongoData = db.search_news({"tags": {"$regex": tag, "$options": "i"}})
+    list = []
+    for item in mongoData:
+        list.append((item["title"], item["url"]))
+    return list
 
 
 # Requisito 9
